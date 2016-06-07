@@ -19,12 +19,13 @@ namespace twee.thetvdbapi.test
         public void CanAuthWithTvDbApi()
         {
             var builder = new ConfigurationBuilder()
+                                         .AddEnvironmentVariables()
                                 .AddUserSecrets("aspnet-twee-thetvdb-api-asdasdasd-shr4e63-asdad-9b77-235245212");
 
 
             var configuration = builder.Build();
 
-            
+
 
             Assert.Equal("Test", configuration["TestSecret"]);
         }
