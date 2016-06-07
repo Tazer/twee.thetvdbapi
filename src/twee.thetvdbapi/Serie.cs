@@ -8,11 +8,11 @@ namespace twee.thetvdbapi
 
     public class SerieResponse : BaseResponse
     {
-        public Serie Serie { get; set; }
+        public SerieData Data { get; set; }
         public Errors Errors { get; set; }
     }
 
-    public class Serie
+    public class SerieData
     {
         public int Id { get; set; }
         public string SeriesName { get; set; }
@@ -33,7 +33,7 @@ namespace twee.thetvdbapi
         public string ImdbId { get; set; }
         public string Zap2ItId { get; set; }
         public string Added { get; set; }
-        public int SiteRating { get; set; }
+        public decimal SiteRating { get; set; }
         public int SiteRatingCount { get; set; }
     }
 

@@ -6,7 +6,7 @@ namespace twee.thetvdbapi
 {
     public class AuthenticationClient
     {
-        public async Task<TokenResponse> Login(string apikey, string username, string userkey)
+        public async Task<TokenResponse> Login(string apikey, string username = "", string userkey = "")
         {
             var client = new TheTvDbHttpClient();
 
