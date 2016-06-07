@@ -1,4 +1,5 @@
 ﻿{
+  "userSecretsId": "aspnet-twee-thetvdb-api-asdasdasd-shr4e63-asdad-9b77-235245212",
   "version": "1.0.0-*",
   "testRunner": "xunit",
   "dependencies": {
@@ -18,6 +19,12 @@
         "dnxcore50",
         "portable-net45+win8"
       ]
+    }
+  },
+  "tools": {
+    "Microsoft.Extensions.SecretManager.Tools": {
+      "version": "1.0.0-preview1-final",
+      "imports": "portable-net45+win8+dnxcore50"
     }
   }
 }
