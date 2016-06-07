@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{274869BB-9C3E-46D6-9594-FABF78491A25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{662A36D4-7ABB-49D3-8589-5EF3610ED4F2}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "twee.thetvdbapi", "src\twee.thetvdbapi\twee.thetvdbapi.xproj", "{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E0AFAEEC-E4BC-4D03-BEEE-54CA0CBEEDF2}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "twee.thetvdbapi.test", "test\twee.thetvdbapi.test\twee.thetvdbapi.test.xproj", "{D2AD519E-1D95-4C4E-B968-06FBF6C23744}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2AD519E-1D95-4C4E-B968-06FBF6C23744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2AD519E-1D95-4C4E-B968-06FBF6C23744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2AD519E-1D95-4C4E-B968-06FBF6C23744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2AD519E-1D95-4C4E-B968-06FBF6C23744}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7} = {274869BB-9C3E-46D6-9594-FABF78491A25}
+		{D2AD519E-1D95-4C4E-B968-06FBF6C23744} = {E0AFAEEC-E4BC-4D03-BEEE-54CA0CBEEDF2}
+	EndGlobalSection
+EndGlobal
