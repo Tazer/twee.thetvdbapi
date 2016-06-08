@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace twee.thetvdbapi
+namespace twee.thetvdbapi.Models
 {
-
-    public class SerieResponse : BaseResponse
-    {
-        public SerieData Data { get; set; }
-        public Errors Errors { get; set; }
-    }
-
     public class SerieData
     {
         public int Id { get; set; }
@@ -36,12 +24,4 @@ namespace twee.thetvdbapi
         public decimal SiteRating { get; set; }
         public int SiteRatingCount { get; set; }
     }
-
-    public class Errors
-    {
-        public string[] InvalidFilters { get; set; }
-        public string InvalidLanguage { get; set; }
-        public string[] InvalidQueryParams { get; set; }
-    }
-
 }
