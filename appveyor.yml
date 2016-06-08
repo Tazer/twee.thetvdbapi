@@ -41,3 +41,12 @@ test_script:
 - cmd: dotnet test .\test\twee.thetvdbapi.test
 artifacts:
 - path: artifacts\bin\twee.thetvdbapi\**\*.nupkg
+deploy:
+ - provider: NuGet
+   server: https://www.nuget.org/api/v2/package
+   symbol_server: https://nuget.smbsrc.net
+   api_key:
+     secure: Z/RQ2kbKIKLj85f0uNyqqFNu2kQUJwsWppvhLGVxgcRHRMqLDdoKRueHIyFwjCt4
+   artifact: /.*\.nupkg/
+   on:
+     branch: master
