@@ -2,12 +2,8 @@ var jsonfile = require('jsonfile');
 var semver = require('semver');
 
 var file = '../src/twee.thetvdbapi/project.json';
-var buildVersion = process.env.APPVEYOR_BUILD_VERSION.substring(1);
-
-var findPoint       = buildVersion.lastIndexOf(".");
-var basePackageVer  = buildVersion.substring(0, findPoint);
-var buildNumber     = buildVersion.substring(findPoint + 1, buildVersion.length);
-var semversion 		= semver.valid(basePackageVer + '-alpha-' + buildNumber)
+var buildVersion = process.env.APPVEYOR_BUILD_VERSION;
+var semversion  = semver.valid(buildVersion)
 
 jsonfile.readFile(file, function (err, project) {
 	project.version = semversion;
