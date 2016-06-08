@@ -10,4 +10,5 @@ jsonfile.readFile(file, function (err, project) {
 	jsonfile.writeFile(file, project, {spaces: 2}, function(err) {
 		console.error(err);
 	});
-})
+});
+process.exit()
