@@ -1,25 +1,33 @@
-version: 1.0.{build}
-configuration: Release
+version: v1.0.0.{build}
+os: Visual Studio 2015
+
 init:
-- appveyor version
+  - ps: iex ((new-object net.webclient).DownloadString('https://gist.githubusercontent.com/PureKrome/0f79e25693d574807939/raw/8cf3160c9516ef1f4effc825c0a44acc918a0b5a/appveyor-build-info.ps'))
+  
+install:
+# Use the install script to grab the latest dotnet install
+- ps: iex .\dotnet-latest.ps1
+
+# Prepend newly installed dotnet cli to the PATH of this build (this cannot be
+# done from inside the powershell script as it would require to restart
+# the parent CMD process).
+- "SET PATH=C:\\Program Files\\dotnet\\bin;%PATH%"
+
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
   assembly_version: '1.0.0.{build}'
   assembly_file_version: '1.0.0.{build}'
+
 before_build:
 - cmd: >-
+    dotnet restore src\twee.thetvdbapi
+    dotnet restore test\twee.thetvdbapi.test
     cd build
-
     npm install
-
     node appveyor-project-version-patch.js
-
     cd..
-- ps: >-
-    (new-object net.webclient).DownloadFile('https://download.microsoft.com/download/4/6/1/46116DFF-29F9-4FF8-94BF-F9BE05BE263B/packages/DotNetCore.1.0.0.RC2-SDK.Preview1-x64.exe','core.exe')
 
-    .\core.exe /install /quiet /norestart
 build_script:
 - cmd: >-
     dotnet pack src\twee.thetvdbapi --configuration Release --output "artifacts\bin\twee.thetvdbapi"
