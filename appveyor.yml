@@ -1,5 +1,7 @@
 version: 1.0.{build}
 configuration: Release
+init:
+- appveyor version
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -12,6 +14,12 @@ before_build:
     core.exe /install /quiet /norestart
 
     dotnet restore
+
+    cd build
+    npm install
+    node appveyor-project-version-patch.js
+    cd..
+
 build:
   verbosity: minimal
 build_script:
