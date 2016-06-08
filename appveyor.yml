@@ -22,11 +22,17 @@ assembly_info:
 before_build:
 - cmd: >-
     dotnet restore src\twee.thetvdbapi
+    
     dotnet restore test\twee.thetvdbapi.test
+    
     cd build
+    
     npm install
+    
     node appveyor-project-version-patch.js
+    
     cd..
+    
 
 build_script:
 - cmd: >-
