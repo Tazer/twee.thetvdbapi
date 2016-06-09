@@ -28,7 +28,7 @@ namespace twee.thetvdbapi.test
 
             _tvDbClient = new TheTvDbClient();
 
-            var response = _tvDbClient.Authentication.Login(apiKey).Result;
+            var response = Task.Run(() => _tvDbClient.Authentication.Login(apiKey)).Result;
             _token = response.Token;
 
         }
