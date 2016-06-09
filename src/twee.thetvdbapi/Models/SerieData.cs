@@ -21,7 +21,7 @@ namespace twee.thetvdbapi.Models
         public string ImdbId { get; set; }
         public string Zap2ItId { get; set; }
         public string Added { get; set; }
-        public decimal SiteRating { get; set; }
+        public decimal? SiteRating { get; set; }
         public int? SiteRatingCount { get; set; }
     }
 }
