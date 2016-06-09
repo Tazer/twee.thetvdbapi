@@ -20,6 +20,7 @@ namespace twee.thetvdbapi.test
         [Theory]
         [InlineData(281662, "Marvel's Daredevil")]
         [InlineData(114701,"The League")]
+        [InlineData(138531, "Solsidan")]
         public async Task CanAuthWithTvDbApiAndGetSerie(int serieid,string seriename)
         {
             var builder = new ConfigurationBuilder()
@@ -45,6 +46,7 @@ namespace twee.thetvdbapi.test
         [Theory]
         [InlineData(281662)]
         [InlineData(114701)]
+        [InlineData(138531)]
         public async Task CanAuthWithTvDbApiAndGetEpisodes(int serieid)
         {
             var builder = new ConfigurationBuilder()
@@ -70,6 +72,7 @@ namespace twee.thetvdbapi.test
         [Theory]
         [InlineData(281662)]
         [InlineData(114701)]
+        [InlineData(138531)]
         public async Task CanAuthWithTvDbApiAndGetActors(int serieid)
         {
             var builder = new ConfigurationBuilder()
@@ -95,6 +98,7 @@ namespace twee.thetvdbapi.test
         [Theory]
         [InlineData(281662)]
         [InlineData(114701)]
+        [InlineData(138531)]
         public async Task CanAuthWithTvDbApiAndGetImageSummary(int serieid)
         {
             var builder = new ConfigurationBuilder()
