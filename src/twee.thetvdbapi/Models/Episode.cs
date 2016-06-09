@@ -1,4 +1,6 @@
-﻿namespace twee.thetvdbapi.Models
+﻿using System;
+
+namespace twee.thetvdbapi.Models
 {
     public class Episode
     {
@@ -10,5 +12,6 @@
         public string EpisodeName { get; set; }
         public int Id { get; set; }
         public string Overview { get; set; }
+        public DateTime? FirstAired { get; set; }
     }
 }
