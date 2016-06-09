@@ -17,8 +17,10 @@ namespace twee.thetvdbapi.test
             _testOutput = testOutput;
         }
 
-        [Fact]
-        public async Task CanAuthWithTvDbApiAndGetSerie()
+        [Theory]
+        [InlineData(281662, "Marvel's Daredevil")]
+        [InlineData(114701,"The League")]
+        public async Task CanAuthWithTvDbApiAndGetSerie(int serieid,string seriename)
         {
             var builder = new ConfigurationBuilder()
                                          .AddEnvironmentVariables()
@@ -35,13 +37,15 @@ namespace twee.thetvdbapi.test
 
             _testOutput.WriteLine(response.Token);
 
-            var serie = await thetvdbClient.Series.GetById(281662, response.Token);
+            var serie = await thetvdbClient.Series.GetById(serieid, response.Token);
 
-            Assert.Equal("Marvel's Daredevil", serie.Data.SeriesName);
+            Assert.Equal(seriename, serie.Data.SeriesName);
         }
 
-        [Fact]
-        public async Task CanAuthWithTvDbApiAndGetEpisodes()
+        [Theory]
+        [InlineData(281662)]
+        [InlineData(114701)]
+        public async Task CanAuthWithTvDbApiAndGetEpisodes(int serieid)
         {
             var builder = new ConfigurationBuilder()
                                          .AddEnvironmentVariables()
@@ -58,13 +62,15 @@ namespace twee.thetvdbapi.test
 
             _testOutput.WriteLine(response.Token);
 
-            var episodes = await thetvdbClient.Series.GetEpisodesBySerieId(281662, response.Token);
+            var episodes = await thetvdbClient.Series.GetEpisodesBySerieId(serieid, response.Token);
 
             Assert.True(episodes.Data.Any());
         }
 
-        [Fact]
-        public async Task CanAuthWithTvDbApiAndGetActors()
+        [Theory]
+        [InlineData(281662)]
+        [InlineData(114701)]
+        public async Task CanAuthWithTvDbApiAndGetActors(int serieid)
         {
             var builder = new ConfigurationBuilder()
                                          .AddEnvironmentVariables()
@@ -81,13 +87,15 @@ namespace twee.thetvdbapi.test
 
             _testOutput.WriteLine(response.Token);
 
-            var episodes = await thetvdbClient.Series.GetActorsBySerieId(281662, response.Token);
+            var episodes = await thetvdbClient.Series.GetActorsBySerieId(serieid, response.Token);
 
             Assert.True(episodes.Data.Any());
         }
 
-        [Fact]
-        public async Task CanAuthWithTvDbApiAndGetImageSummary()
+        [Theory]
+        [InlineData(281662)]
+        [InlineData(114701)]
+        public async Task CanAuthWithTvDbApiAndGetImageSummary(int serieid)
         {
             var builder = new ConfigurationBuilder()
                                          .AddEnvironmentVariables()
@@ -104,7 +112,7 @@ namespace twee.thetvdbapi.test
 
             _testOutput.WriteLine(response.Token);
 
-            var episodes = await thetvdbClient.Series.GetImageSummaryBySerieId(281662, response.Token);
+            var episodes = await thetvdbClient.Series.GetImageSummaryBySerieId(serieid, response.Token);
 
             Assert.NotEqual(0,episodes.Data.Poster);
         }
