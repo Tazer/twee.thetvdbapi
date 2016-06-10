@@ -101,5 +101,27 @@ namespace twee.thetvdbapi.test
 
             Assert.True(images.Data.Any());
         }
+
+        [Fact]
+        public async Task CanGetSearchParams()
+        {
+            
+
+            var searchParams = await _tvDbClient.Search.GetSearchParams(_token);
+
+            Assert.True(searchParams.Data.Params.Any());
+        }
+
+        [Fact]
+        public async Task CanSearch()
+        {
+
+
+            var searchResult = await _tvDbClient.Search.GetSearch(_token, "Dare-devil");
+
+            var Daredevil = searchResult.Data.FirstOrDefault();
+
+            Assert.Equal("Netflix",Daredevil.Network);
+        }
     }
 }
