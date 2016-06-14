@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using twee.thetvdbapi.Models;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -122,6 +123,25 @@ namespace twee.thetvdbapi.test
             var Daredevil = searchResult.Data.FirstOrDefault();
 
             Assert.Equal("Netflix",Daredevil.Network);
+        }
+
+        [Fact]
+        public async Task CanGetSeveralPagesOfEpisodes()
+        {
+            var serieid = 71663;
+
+            var fullListOfEpisodes = new List<Episode>();
+
+            var episodes = await _tvDbClient.Series.GetEpisodesBySerieId(serieid, _token);
+            fullListOfEpisodes.AddRange(episodes.Data);
+            while (episodes.Links.Next != null)
+            {
+                episodes = await _tvDbClient.Series.GetEpisodesBySerieId(serieid, _token,episodes.Links.Current + 1);
+                fullListOfEpisodes.AddRange(episodes.Data);
+            }
+
+
+            Assert.True(fullListOfEpisodes.Count > 300);
         }
     }
 }

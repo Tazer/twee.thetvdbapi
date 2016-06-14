@@ -17,14 +17,26 @@ namespace twee.thetvdbapi
             return JsonConvert.DeserializeObject<SerieResponse>(result);
         }
         //TODO: add support for paging
-        public async Task<EpisodesResponse> GetEpisodesBySerieId(int id, string token)
+        public async Task<EpisodesResponse> GetEpisodesBySerieId(int id, string token,int page = 1)
         {
             var client = new TheTvDbHttpClient(token);
-            var response = await client.HttpClient.GetAsync($"/series/{id}/episodes");
+
+            var parametersToAdd = new System.Collections.Generic.Dictionary<string, string>();
+
+            if (page != 1)
+                parametersToAdd.Add("page", page.ToString());
+
+            var queryUrl = $"/series/{id}/episodes";
+            var queryUrlWithParameters = Microsoft.AspNetCore.WebUtilities.QueryHelpers.AddQueryString(queryUrl, parametersToAdd);
+
+            var response = await client.HttpClient.GetAsync(queryUrlWithParameters);
 
             var result = await response.Content.ReadAsStringAsync();
+            var parsedResult = JsonConvert.DeserializeObject<EpisodesResponse>(result);
 
-            return JsonConvert.DeserializeObject<EpisodesResponse>(result);
+            parsedResult.Links.Current = page;
+
+            return parsedResult;
         }
 
         public async Task<ActorsResponse> GetActorsBySerieId(int id, string token)
