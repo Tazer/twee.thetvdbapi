@@ -50,6 +50,7 @@ namespace twee.thetvdbapi.test
         [InlineData(281662)]
         [InlineData(114701)]
         [InlineData(138531)]
+        [InlineData(73507)]
         public async Task CanAuthWithTvDbApiAndGetEpisodes(int serieid)
         {
 
