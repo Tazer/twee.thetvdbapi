@@ -132,12 +132,32 @@ namespace twee.thetvdbapi.test
 
             var fullListOfEpisodes = new List<Episode>();
 
-            var episodes = await _tvDbClient.Series.GetEpisodesBySerieId(serieid, _token);
-            fullListOfEpisodes.AddRange(episodes.Data);
-            while (episodes.Links.Next != null)
+
+
+            var episodeResponse = await _tvDbClient.Series.GetEpisodesBySerieId(serieid, _token);
+
+            IList<Task<EpisodesResponse>> episodeQueries = new List<Task<EpisodesResponse>>();
+
+
+            fullListOfEpisodes.AddRange(episodeResponse.Data);
+
+            if (episodeResponse.Links.Next != null)
             {
-                episodes = await _tvDbClient.Series.GetEpisodesBySerieId(serieid, _token,episodes.Links.Current + 1);
-                fullListOfEpisodes.AddRange(episodes.Data);
+                for (int i = 2; i <= episodeResponse.Links.Last; i++)
+                {
+                    episodeQueries.Add(_tvDbClient.Series.GetEpisodesBySerieId(serieid, _token,i)); //TODO: add page
+                }
+
+                while (episodeQueries.Count > 0)
+                {
+                    Task<EpisodesResponse> finishedEpisodeTask = await Task.WhenAny(episodeQueries);
+
+                    episodeQueries.Remove(finishedEpisodeTask);
+
+                    var finishedEpisodeResult = await finishedEpisodeTask;
+
+                    fullListOfEpisodes.AddRange(finishedEpisodeResult.Data);
+                }
             }
 
 
