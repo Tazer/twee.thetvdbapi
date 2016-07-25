@@ -38,6 +38,7 @@ namespace twee.thetvdbapi.test
         [InlineData(281662, "Marvel's Daredevil")]
         [InlineData(114701,"The League")]
         [InlineData(138531, "Solsidan")]
+        [InlineData(274099, "@midnight")]
         public async Task CanAuthWithTvDbApiAndGetSerie(int serieid,string seriename)
         {
 

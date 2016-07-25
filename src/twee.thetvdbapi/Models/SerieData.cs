@@ -6,7 +6,7 @@ namespace twee.thetvdbapi.Models
         public string SeriesName { get; set; }
         public string[] Aliases { get; set; }
         public string Banner { get; set; }
-        public int? SeriesId { get; set; }
+        public string SeriesId { get; set; }
         public string Status { get; set; }
         public string FirstAired { get; set; }
         public string Network { get; set; }
