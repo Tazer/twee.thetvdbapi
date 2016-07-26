@@ -39,6 +39,7 @@ namespace twee.thetvdbapi.test
         [InlineData(114701,"The League")]
         [InlineData(138531, "Solsidan")]
         [InlineData(274099, "@midnight")]
+        [InlineData(255316, "Elementary")]
         public async Task CanAuthWithTvDbApiAndGetSerie(int serieid,string seriename)
         {
 
@@ -52,6 +53,7 @@ namespace twee.thetvdbapi.test
         [InlineData(114701)]
         [InlineData(138531)]
         [InlineData(73507)]
+        [InlineData(255316)]
         public async Task CanAuthWithTvDbApiAndGetEpisodes(int serieid)
         {
 
@@ -64,6 +66,7 @@ namespace twee.thetvdbapi.test
         [InlineData(281662)]
         [InlineData(114701)]
         [InlineData(138531)]
+        [InlineData(255316)]
         public async Task CanAuthWithTvDbApiAndGetActors(int serieid)
         {
 
@@ -76,6 +79,7 @@ namespace twee.thetvdbapi.test
         [InlineData(281662)]
         [InlineData(114701)]
         [InlineData(138531)]
+        [InlineData(255316)]
         public async Task CanAuthWithTvDbApiAndGetImageSummary(int serieid)
         {
 
