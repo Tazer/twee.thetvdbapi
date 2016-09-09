@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using twee.thetvdbapi.Models;
@@ -9,8 +11,8 @@ namespace twee.thetvdbapi
     {
         public async Task<SearchParamsResponse> GetSearchParams(string token)
         {
-            var client = new TheTvDbHttpClient(token);
-            var response = await client.HttpClient.GetAsync($"/search/series/params");
+            var client = TheTvDbHttpClient.GetClient();
+            var response = await client.SendAsync(HttpClientHelper.GetHttpRequestMessage($"/search/series/params", token));
 
             var result = await response.Content.ReadAsStringAsync();
 
@@ -19,7 +21,7 @@ namespace twee.thetvdbapi
 
         public async Task<SearchResponse> GetSearch(string token, string name = "", string imdbId = "", string zap2ItId = "")
         {
-            var client = new TheTvDbHttpClient(token);
+            var client = TheTvDbHttpClient.GetClient();
 
             var parametersToAdd = new System.Collections.Generic.Dictionary<string, string>();
 
@@ -33,7 +35,7 @@ namespace twee.thetvdbapi
             var queryUrl = $"/search/series";
             var queryUrlWithParameters = Microsoft.AspNetCore.WebUtilities.QueryHelpers.AddQueryString(queryUrl, parametersToAdd);
 
-            var response = await client.HttpClient.GetAsync(queryUrlWithParameters);
+            var response = await client.SendAsync(HttpClientHelper.GetHttpRequestMessage(queryUrlWithParameters,token) );
 
             var result = await response.Content.ReadAsStringAsync();
 

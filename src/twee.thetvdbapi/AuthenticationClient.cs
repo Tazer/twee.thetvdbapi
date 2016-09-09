@@ -8,11 +8,11 @@ namespace twee.thetvdbapi
     {
         public async Task<TokenResponse> Login(string apikey, string username = "", string userkey = "")
         {
-            var client = new TheTvDbHttpClient();
+            var client = TheTvDbHttpClient.GetClient();
 
             var request = new { apikey, username, userkey };
 
-            var response = await client.HttpClient.PostAsJsonAsync("/login", request);
+            var response = await client.PostAsJsonAsync("/login", request);
 
             var result = await response.Content.ReadAsStringAsync();
 
@@ -21,11 +21,11 @@ namespace twee.thetvdbapi
 
         public async Task<TokenResponse> RefreshToken(string token)
         {
-            var client = new TheTvDbHttpClient();
+            var client = TheTvDbHttpClient.GetClient();
 
             var request = new { token };
 
-            var response = await client.HttpClient.PostAsJsonAsync("/refresh_token", request);
+            var response = await client.PostAsJsonAsync("/refresh_token", request);
 
             var result = await response.Content.ReadAsStringAsync();
 
