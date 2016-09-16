@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using twee.thetvdbapi.Models;
 using Xunit;
 using Xunit.Abstractions;
@@ -16,6 +17,8 @@ namespace twee.thetvdbapi.test
         private readonly TheTvDbClient _tvDbClient;
         public TvTheDbClientTest(ITestOutputHelper testOutput)
         {
+            var logger = new LoggerFactory()
+.CreateLogger("Tests");
             _testOutput = testOutput;
 
             var builder = new ConfigurationBuilder()
@@ -27,7 +30,7 @@ namespace twee.thetvdbapi.test
 
             var apiKey = configuration["ApiKey"];
 
-            _tvDbClient = new TheTvDbClient();
+            _tvDbClient = new TheTvDbClient(logger);
 
             var response = Task.Run(() => _tvDbClient.Authentication.Login(apiKey)).Result;
             _token = response.Token;

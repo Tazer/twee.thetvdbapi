@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Xunit;
 using twee.thetvdbapi;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
 namespace twee.thetvdbapi.test
@@ -41,6 +42,9 @@ namespace twee.thetvdbapi.test
         [Fact]
         public async Task CanAuthWithTvDbApi()
         {
+            var logger = new LoggerFactory()
+      .CreateLogger("Tests");
+
             var builder = new ConfigurationBuilder()
                                          .AddEnvironmentVariables()
                                 .AddUserSecrets("aspnet-twee-thetvdb-api-asdasdasd-shr4e63-asdad-9b77-235245212");
@@ -50,7 +54,7 @@ namespace twee.thetvdbapi.test
 
             var apiKey = configuration["ApiKey"];
 
-            var thetvdbClient = new TheTvDbClient();
+            var thetvdbClient = new TheTvDbClient(logger);
 
             var response = await thetvdbClient.Authentication.Login(apiKey);
 

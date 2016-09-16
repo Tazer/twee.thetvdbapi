@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-twee-thetvdb-api-asdasdasd-shr4e63-asdad-9b77-235245212",
   "version": "1.0.0-*",
   "testRunner": "xunit",
@@ -9,7 +9,8 @@
     "twee.thetvdbapi": "1.0.0-*",
     "Microsoft.Extensions.Configuration": "1.0.0",
     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0",
-    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0"
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+    "Microsoft.Extensions.Logging": "1.0.0"
   },
   "frameworks": {
     "netcoreapp1.0": {

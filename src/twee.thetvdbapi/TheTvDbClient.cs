@@ -1,10 +1,12 @@
-﻿namespace twee.thetvdbapi
+﻿using Microsoft.Extensions.Logging;
+
+namespace twee.thetvdbapi
 {
     public class TheTvDbClient
     {
-        public TheTvDbClient()
+        public TheTvDbClient(ILogger logger)
         {
-            Authentication = new AuthenticationClient();
+            Authentication = new AuthenticationClient(logger);
             Series = new SeriesClient();
             Search = new SearchClient();
         }
