@@ -30,7 +30,15 @@ namespace twee.thetvdbapi
                 return new TokenResponse() { Error = $"Error {response.StatusCode}" };
             }
 
-            return JsonConvert.DeserializeObject<TokenResponse>(result);
+            var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(result);
+
+            var securityTokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+
+            var jwtToken = securityTokenHandler.ReadJwtToken(tokenResponse.Token);
+
+            tokenResponse.Expire = jwtToken.Payload.Exp;
+
+            return tokenResponse;
         }
 
         public async Task<TokenResponse> RefreshToken(string token)
@@ -48,7 +56,15 @@ namespace twee.thetvdbapi
                 return new TokenResponse() {Error = $"Error {response.StatusCode}"};
             }
 
-            return JsonConvert.DeserializeObject<TokenResponse>(result);
+            var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(result);
+
+            var securityTokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+
+            var jwtToken = securityTokenHandler.ReadJwtToken(tokenResponse.Token);
+
+            tokenResponse.Expire = jwtToken.Payload.Exp;
+
+            return tokenResponse;
         }
     }
 }

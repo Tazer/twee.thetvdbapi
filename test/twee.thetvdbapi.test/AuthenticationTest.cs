@@ -59,6 +59,7 @@ namespace twee.thetvdbapi.test
             var response = await thetvdbClient.Authentication.Login(apiKey);
 
             _testOutput.WriteLine(response.Token);
+            _testOutput.WriteLine(response?.Expire.ToString());
         }
 
 
