@@ -11,11 +11,10 @@ namespace twee.thetvdbapi
 
     public static class TheTvDbHttpClient
     {
-        private static readonly HttpClient _httpClient = new HttpClient() {BaseAddress = new Uri("https://api.thetvdb.com") };
+        private static readonly HttpClient _httpClient = new HttpClient() {BaseAddress = new Uri("https://api.thetvdb.com"),DefaultRequestHeaders = { Accept = { new MediaTypeWithQualityHeaderValue("application/json") } }};
 
         public static HttpClient GetClient()
         {
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             return _httpClient;
         }
         
