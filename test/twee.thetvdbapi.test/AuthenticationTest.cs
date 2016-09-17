@@ -62,6 +62,35 @@ namespace twee.thetvdbapi.test
             _testOutput.WriteLine(response?.Expire.ToString());
         }
 
+        [Fact]
+        public async Task CanGetRefreshTokenWithTvDbApi()
+        {
+            var logger = new LoggerFactory()
+      .CreateLogger("Tests");
+
+            var builder = new ConfigurationBuilder()
+                                         .AddEnvironmentVariables()
+                                .AddUserSecrets("aspnet-twee-thetvdb-api-asdasdasd-shr4e63-asdad-9b77-235245212");
+
+
+            var configuration = builder.Build();
+
+            var apiKey = configuration["ApiKey"];
+
+            var thetvdbClient = new TheTvDbClient(logger);
+
+            var response = await thetvdbClient.Authentication.Login(apiKey);
+
+            _testOutput.WriteLine(response.Token);
+            _testOutput.WriteLine(response?.Expire.ToString());
+
+            var refreshResponse = await thetvdbClient.Authentication.RefreshToken(response.Token);
+
+            _testOutput.WriteLine(refreshResponse.Token);
+            _testOutput.WriteLine(refreshResponse?.Expire.ToString());
+
+        }
+
 
 
     }

@@ -45,15 +45,13 @@ namespace twee.thetvdbapi
         {
             var client = TheTvDbHttpClient.GetClient();
 
-            var request = new { token };
-
-            var response = await client.PostAsJsonAsync("/refresh_token", request);
+            var response = await client.SendAsync(HttpClientHelper.GetHttpRequestMessage($"/refresh_token", token));
 
             var result = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
             {
                 _logger.LogError($"[{response.StatusCode}] {result}");
-                return new TokenResponse() {Error = $"Error {response.StatusCode}"};
+                return new TokenResponse() { Error = $"Error {response.StatusCode}" };
             }
 
             var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(result);
