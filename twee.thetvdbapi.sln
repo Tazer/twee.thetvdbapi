@@ -1,20 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{274869BB-9C3E-46D6-9594-FABF78491A25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{662A36D4-7ABB-49D3-8589-5EF3610ED4F2}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "twee.thetvdbapi", "src\twee.thetvdbapi\twee.thetvdbapi.xproj", "{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E0AFAEEC-E4BC-4D03-BEEE-54CA0CBEEDF2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "twee.thetvdbapi.test", "test\twee.thetvdbapi.test\twee.thetvdbapi.test.xproj", "{D2AD519E-1D95-4C4E-B968-06FBF6C23744}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "twee.thetvdbapi", "src\twee.thetvdbapi\twee.thetvdbapi.csproj", "{76D86DF7-EEF9-4501-BC2E-B3FDBB62E6B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "twee.thetvdbapi.test", "test\twee.thetvdbapi.test\twee.thetvdbapi.test.csproj", "{D2AD519E-1D95-4C4E-B968-06FBF6C23744}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
