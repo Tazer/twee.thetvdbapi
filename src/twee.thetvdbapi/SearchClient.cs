@@ -57,6 +57,11 @@ namespace twee.thetvdbapi
 
     public class SearchResponse
     {
+        public SearchResponse()
+        {
+            if (Data == null)
+                Data = new List<Search>();
+        }
         public IEnumerable<Search> Data { get; set; }
     }
 
