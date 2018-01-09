@@ -23,7 +23,7 @@ before_build:
 - cmd: >-
     dotnet restore src\twee.thetvdbapi
     
-    dotnet restore test\twee.thetvdbapi.test
+    #dotnet restore test\twee.thetvdbapi.test
     
     cd build
     
