@@ -37,8 +37,8 @@ before_build:
 build_script:
 - cmd: >-
     dotnet pack src\twee.thetvdbapi --configuration Release --output "artifacts\bin\twee.thetvdbapi"
-test_script:
-- cmd: dotnet test .\test\twee.thetvdbapi.test
+# test_script:
+# - cmd: dotnet test .\test\twee.thetvdbapi.test
 artifacts:
 - path: artifacts\bin\twee.thetvdbapi\**\*.nupkg
 deploy:
